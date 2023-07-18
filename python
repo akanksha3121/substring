@@ -1,0 +1,25 @@
+def print_shortest_substrings(s, x):
+    substrings = []
+    
+    for i in range(len(s)):
+        for j in range(i + x, len(s) + 1):
+            substring = s[i:j]
+            if substring[0] == substring[-1] and len(substring) >= x:
+                if not substrings or len(substring) < len(substrings[0]):
+                    substrings = [substring]
+                elif len(substring) == len(substrings[0]):
+                    substrings.append(substring)
+    
+    if substrings:
+        print("Shortest substring:", x)
+        for substring in substrings:
+            print(substring)
+    else:
+        print("No substring ")
+
+
+ # Take user input for each test case
+s = input("Enter a string : ")
+x = int(input("Enter the minimum length: "))
+print_shortest_substrings(s, x)
+print()
